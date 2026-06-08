@@ -206,6 +206,7 @@ Generated: {datetime.now().isoformat(timespec="seconds")}
 - Equal contribution: {EQUAL_CONTRIBUTION}
 - Funding: {FUNDING_STATEMENT}
 - Corresponding author: Xuefeng Shi.
+- Reproducibility repository: https://github.com/HAOYANGLI888/SC-PROST-LUAD
 
 These records were carried forward from the two previous submission packages as requested.
 
