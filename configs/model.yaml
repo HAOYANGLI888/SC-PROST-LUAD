@@ -1,0 +1,35 @@
+model:
+  survival_time_column: os_time
+  event_column: os_event
+  train:
+    random_seed: 20260529
+    test_size: 0.2
+    validation_size: 0.2
+    n_splits: 5
+
+  baselines:
+    cox:
+      enabled: true
+      penalizer: 0.0
+    lasso_cox:
+      enabled: true
+      alpha_grid: [0.001, 0.01, 0.1, 1.0]
+    random_survival_forest:
+      enabled: true
+      n_estimators: 200
+      min_samples_leaf: 5
+    deepsurv:
+      enabled: true
+      hidden_dims: [256, 128]
+      dropout: 0.2
+      learning_rate: 0.001
+      epochs: 100
+
+  multimodal:
+    modality_dropout: 0.2
+    embedding_dim: 256
+    transformer_heads: 4
+    transformer_layers: 2
+    losses:
+      cox: true
+      discrete_time: true

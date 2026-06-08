@@ -1,0 +1,16 @@
+model_name,split,c_index,auc_1_year,auc_3_year,auc_5_year,km_logrank_p,risk_cutoff,patient_count,events,interpretation
+clinical_only_cox,test,0.7272727272727273,0.9375,0.625,0.4444444444444444,0.33822098294650216,-0.027771919965743953,20,10,pilot feasibility only; not a scientific performance estimate
+clinical_only_cox,train,0.5837927232635061,0.6285714285714286,0.5885093167701864,0.5,0.5733084048974741,-0.0430435091257095,60,30,pilot feasibility only; not a scientific performance estimate
+clinical_only_cox,validation,0.6576576576576577,0.7142857142857143,0.7777777777777777,0.7,0.08566059012753778,-0.07817091047763826,20,10,pilot feasibility only; not a scientific performance estimate
+clinical_pathology_attention_fusion_cox,test,0.4675324675324675,0.46875,0.3125,0.4444444444444444,0.48611763912273454,-0.024347782135009766,20,10,pilot feasibility only; not a scientific performance estimate
+clinical_pathology_attention_fusion_cox,train,0.9966923925027563,1.0,1.0,1.0,8.234053863349355e-12,-5.015335321426392,60,30,pilot feasibility only; not a scientific performance estimate
+clinical_pathology_attention_fusion_cox,validation,0.7027027027027027,0.7714285714285715,0.75,0.9,0.03820693098226888,-3.241399049758911,20,10,pilot feasibility only; not a scientific performance estimate
+clinical_pathology_gated_fusion_cox,test,0.5194805194805194,0.40625,0.5,0.7777777777777778,0.7229176442874093,-1.6402273178100586,20,10,pilot feasibility only; not a scientific performance estimate
+clinical_pathology_gated_fusion_cox,train,0.9911797133406836,1.0,1.0,1.0,5.0048158978478975e-12,-3.350019693374634,60,30,pilot feasibility only; not a scientific performance estimate
+clinical_pathology_gated_fusion_cox,validation,0.7117117117117117,0.8,0.7222222222222222,0.9,0.09437457064420292,-1.9155836701393127,20,10,pilot feasibility only; not a scientific performance estimate
+pathology_attention_mil_cox,test,0.5324675324675324,0.59375,0.3125,0.4444444444444444,0.48611763912273454,-1.8742560744285583,20,10,pilot feasibility only; not a scientific performance estimate
+pathology_attention_mil_cox,train,0.9933847850055126,0.9971428571428571,1.0,1.0,5.126319444645399e-12,-5.5028395652771,60,30,pilot feasibility only; not a scientific performance estimate
+pathology_attention_mil_cox,validation,0.6396396396396397,0.6857142857142857,0.75,0.9,0.1775217657426261,-4.861335754394531,20,10,pilot feasibility only; not a scientific performance estimate
+pathology_gated_mil_cox,test,0.5324675324675324,0.40625,0.5625,0.8888888888888888,0.562529304174427,-2.0951059460639954,20,10,pilot feasibility only; not a scientific performance estimate
+pathology_gated_mil_cox,train,0.9944873208379272,1.0,1.0,1.0,8.234053863349355e-12,-3.5175586938858032,60,30,pilot feasibility only; not a scientific performance estimate
+pathology_gated_mil_cox,validation,0.6666666666666666,0.7285714285714286,0.6944444444444444,0.9,0.09437457064420292,-3.393247127532959,20,10,pilot feasibility only; not a scientific performance estimate

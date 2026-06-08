@@ -1,0 +1,17 @@
+signature_name,cell_state,category,expected_risk_direction,tcga_spearman_rho,tcga_direction,geo_cohorts_evaluable,geo_cohorts_direction_match_tcga,geo_cohorts_direction_opposite_tcga,direction_consistency_fraction,external_direction_consistency,matches_predefined_risk_direction
+malignant_epithelial_cells,malignant epithelial cells,tumor,context_dependent,0.2774138700334513,positive,4,3,1,0.75,consistent,
+emt_like_tumor_cells,EMT-like tumor cells,tumor_state,higher_risk,0.1928320986620591,positive,4,4,0,1.0,consistent,True
+proliferative_tumor_cells,proliferative tumor cells,tumor_state,higher_risk,0.3489084464942464,positive,4,4,0,1.0,consistent,True
+hypoxia_tumor_cells,hypoxia tumor cells,tumor_state,higher_risk,0.3538945609213246,positive,4,4,0,1.0,consistent,True
+exhausted_cd8_t_cells,exhausted CD8 T cells,immune,higher_risk,-0.1412069227586482,negative,4,4,0,1.0,consistent,False
+cytotoxic_cd8_t_cells,cytotoxic CD8 T cells,immune,lower_risk,-0.0356908067813947,negative,4,1,3,0.25,mixed_or_unstable,False
+treg_cells,Treg cells,immune,higher_risk,-0.0723561307171201,negative,4,2,2,0.5,mixed_or_unstable,False
+m2_like_macrophages,M2-like macrophages,myeloid,higher_risk,-0.0826329256485371,negative,4,4,0,1.0,consistent,False
+m1_like_macrophages,M1-like macrophages,myeloid,lower_risk,-0.0199542641702431,negative,4,0,4,0.0,mixed_or_unstable,False
+dendritic_cells,dendritic cells,myeloid,lower_risk,-0.2562602944277043,negative,4,4,0,1.0,consistent,True
+caf,CAF,stroma,higher_risk,0.1040873899083209,positive,4,3,1,0.75,consistent,True
+endothelial_cells,endothelial cells,stroma,context_dependent,-0.0831855763540555,negative,4,4,0,1.0,consistent,
+b_cells,B cells,immune,lower_risk,-0.3229713919103478,negative,4,4,0,1.0,consistent,True
+plasma_cells,plasma cells,immune,lower_risk,-0.2232883292165052,negative,4,3,1,0.75,consistent,True
+nk_cells,NK cells,immune,lower_risk,0.0143027247254473,positive,4,3,1,0.75,consistent,False
+mast_cells,mast cells,immune,context_dependent,-0.2298075519563325,negative,4,4,0,1.0,consistent,

@@ -1,0 +1,6 @@
+mechanism,expected_cellular_context,top_observed_cell_types,top_observed_score,expected_context_in_top3,support_status,evidence_scope
+hypoxia,Epithelial;Malignant epithelial,Malignant epithelial;Epithelial;Fibroblasts/CAF,0.6875109681077999,True,supported_primary_context,raw scRNA cellular-context association; not survival validation or causal confirmation
+proliferation,Epithelial;Malignant epithelial,T cells;Malignant epithelial;Dendritic cells,0.4038083383146032,True,partially_supported,raw scRNA cellular-context association; not survival validation or causal confirmation
+emt_like,Epithelial;Fibroblasts/CAF;Malignant epithelial,Fibroblasts/CAF;Macrophages/monocytes;Endothelial cells,0.8687828881297855,True,supported_stromal_context_only,raw scRNA cellular-context association; not survival validation or causal confirmation
+caf_matrix,Fibroblasts/CAF,Fibroblasts/CAF;Malignant epithelial;Epithelial,1.5457215055029958,True,supported_primary_context,raw scRNA cellular-context association; not survival validation or causal confirmation
+dendritic_b_plasma_context,B cells;Dendritic cells;Plasma cells,B cells;Dendritic cells;Macrophages/monocytes,1.9612687725450688,True,supported_primary_context,raw scRNA cellular-context association; not survival validation or causal confirmation

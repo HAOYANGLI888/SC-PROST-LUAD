@@ -1,0 +1,5 @@
+cohort,platform,patients,death_events,censored,clinical_missing_fraction
+GSE31210,GPL570,226,35,191,0.0
+GSE50081,GPL570,127,51,76,0.0
+GSE72094,GPL15048,398,113,285,0.01256281407035176
+GSE68465,GPL96,442,236,206,1.0

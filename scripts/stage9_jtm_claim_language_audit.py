@@ -1,0 +1,32 @@
+"""Audit Stage 9 DOCX files for high-risk or overstated scientific language."""
+
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+import sys
+
+
+ROOT = Path(__file__).resolve().parents[1]
+SRC = ROOT / "src"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
+
+from reporting.stage9_jtm import write_language_audit  # noqa: E402
+
+
+def build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--config", default="configs/base.yaml", help="Project YAML config path.")
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    build_arg_parser().parse_args(argv)
+    output = write_language_audit(ROOT)
+    print(f"Generated JTM language-risk audit: {output}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,47 @@
+data:
+  cohort: TCGA-LUAD
+  patient_id_format: TCGA barcode first 12 characters
+  allow_private_hospital_data: false
+
+  modalities:
+    clinical:
+      planned_source: GDC or UCSC Xena public TCGA clinical tables
+      expected_stage: 1
+      required_for_core_model: true
+    survival:
+      planned_source: TCGA curated survival tables
+      expected_stage: 1
+      required_for_core_model: true
+    rnaseq:
+      planned_source: GDC harmonized HTSeq counts/FPKM or UCSC Xena expression matrix
+      expected_stage: 1
+      required_for_core_model: true
+    mutation:
+      planned_source: GDC MAF
+      expected_stage: 3
+      required_for_core_model: false
+    cnv:
+      planned_source: GDC or Firehose copy-number data
+      expected_stage: 3
+      required_for_core_model: false
+    methylation:
+      planned_source: GDC DNA methylation beta values
+      expected_stage: 3
+      required_for_core_model: false
+    wsi:
+      planned_source: GDC diagnostic slide images when publicly accessible
+      expected_stage: 6
+      required_for_core_model: false
+    protein:
+      planned_source: CPTAC proteomics or Human Protein Atlas expression/IHC evidence
+      expected_stage: 5
+      required_for_core_model: false
+    single_cell:
+      planned_source: Public LUAD single-cell datasets selected in Stage 4
+      expected_stage: 4
+      required_for_core_model: false
+
+metadata_files:
+  data_manifest_template: data/metadata/data_manifest_template.csv
+  patient_manifest_template: data/metadata/patient_manifest_template.csv
+  stage0_directory_manifest: data/metadata/stage0_directory_manifest.csv

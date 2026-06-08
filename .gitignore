@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Environments
+.venv/
+venv/
+env/
+.conda/
+
+# Editor and OS files
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+
+# Large biomedical data should never be committed.
+data/raw/*
+data/processed/*
+data/metadata/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/metadata/.gitkeep
+
+# Local storage-migration backups and junction targets.
+data__c_backup_*/
+outputs__c_backup_*/
+
+# Generated outputs are reproducible and may contain patient-level records.
+outputs/**
+!outputs/.gitkeep
+!outputs/figures/
+!outputs/figures/.gitkeep
+!outputs/tables/
+!outputs/tables/.gitkeep
+!outputs/checkpoints/
+!outputs/checkpoints/.gitkeep
+!outputs/logs/
+!outputs/logs/.gitkeep
+!outputs/reports/
+!outputs/reports/.gitkeep
+
+# Large scientific and model artifacts.
+*.svs
+*.tif
+*.tiff
+*.h5ad
+*.h5seurat
+*.rds
+*.zarr/
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.joblib
+
+# Machine-specific generated reports.
+audit_report.md
+docs/stage6a_environment_fix_report.md
+
+# Local secrets or API tokens
+.env
+.env.*
+*.token
+*.key
+*.pem
+gdc-user-token*

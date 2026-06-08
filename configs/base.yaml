@@ -1,0 +1,92 @@
+project:
+  name: SC-PROST-LUAD
+  version: 0.0.1
+  disease: LUAD
+  description: Single-cell-guided digital pathology and proteogenomic multimodal survival modeling.
+  seed: 20260529
+  timezone: Asia/Shanghai
+
+runtime:
+  device: auto
+  num_workers: 0
+  deterministic: true
+
+paths:
+  data_raw: data/raw
+  data_processed: data/processed
+  data_metadata: data/metadata
+  outputs: outputs
+  figures: outputs/figures
+  tables: outputs/tables
+  checkpoints: outputs/checkpoints
+  logs: outputs/logs
+  audit: outputs/audit
+
+audit:
+  enabled: true
+  report_name: audit_report.md
+
+stage2:
+  endpoint: OS
+  os_time_unit: days
+  os_event_encoding: death=1,censored=0
+  split_seeds: [42, 3407, 2026]
+  split_ratio: [0.6, 0.2, 0.2]
+  rnaseq:
+    expected_input: data/raw/tcga_luad/rnaseq/tcga_luad_tpm_matrix.csv
+    transform: log2(TPM+1)
+    top_variable_genes: 3000
+    missing_fraction_max: 0.2
+    expressed_fraction_min: 0.1
+
+stage2c:
+  endpoint: OS
+  outer_folds: 5
+  inner_folds: 3
+  seeds: [42, 3407, 2026]
+  pathway_gene_sets:
+    hallmark: data/raw/gene_sets/h.all.v2025.1.Hs.symbols.gmt
+    reactome: data/raw/gene_sets/c2.cp.reactome.v2025.1.Hs.symbols.gmt
+  geo_validation:
+    cohorts: [GSE31210, GSE50081, GSE72094, GSE68465]
+    probe_collapse_strategy: mean
+    independent_external_zscore: true
+
+stage2d:
+  endpoint: OS
+  external_cohorts: [GSE31210, GSE50081, GSE72094, GSE68465]
+  frozen_model: outputs/checkpoints/stage2c_tcga_fixed_rna_validation_model.pkl
+  probe_collapse_strategy: mean
+  missing_gene_fraction_drop_threshold: 0.30
+  horizons_days: [365, 1095, 1825]
+
+stage4b:
+  dataset: GSE131907
+  qc:
+    min_genes: 100
+    min_counts: 200
+    max_genes: 10000
+    max_mito_fraction: 30.0
+    min_cells_per_gene: 3
+    target_sum: 10000.0
+    n_hvg: 2000
+    n_pcs: 30
+    n_neighbors: 15
+
+stage6a:
+  endpoint: OS
+  wsi:
+    project: TCGA-LUAD
+    data_type: Slide Image
+    experimental_strategy: Diagnostic Slide
+    data_format: SVS
+    smallset_slides: 20
+    patch_size: 256
+    tissue_threshold: 0.35
+    max_patches_small_test: 200
+    max_patches_smallset: 1000
+    feature_backend: torchvision_pretrained_resnet50
+    feature_batch_size: 32
+  models:
+    hidden_dim: 64
+    loss: cox_partial_likelihood_breslow
