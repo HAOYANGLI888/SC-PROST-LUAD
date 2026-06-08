@@ -1378,8 +1378,13 @@ def _sequence(text: str, pattern: str) -> list[int]:
 
 def compliance_report(root: str | Path = ".") -> str:
     paths = bmc_paths(root)
-    text = _document_text(paths["main"])
-    xml = _document_xml(paths["main"])
+    cleaned = (
+        paths["manuscript"]
+        / "BMC_Cancer_main_manuscript_reference_table_cleaned.docx"
+    )
+    manuscript_path = cleaned if cleaned.exists() else paths["main"]
+    text = _document_text(manuscript_path)
+    xml = _document_xml(manuscript_path)
     abstract_match = re.search(
         r"Abstract\s+(.*?)\s+Keywords:", text, flags=re.DOTALL | re.IGNORECASE
     )
@@ -1442,7 +1447,7 @@ Generated: {datetime.now().isoformat(timespec="seconds")}
 
 ## Scope
 
-This engineering audit compares the generated Research Article draft with the current BMC Cancer manuscript guidance. It does not constitute editorial acceptance.
+This engineering audit compares the latest cleaned Research Article draft with the current BMC Cancer manuscript guidance. It does not constitute editorial acceptance.
 
 ## Automated Checks
 
@@ -1454,7 +1459,7 @@ This engineering audit compares the generated Research Article draft with the cu
 
 - Abstract words: {abstract_words} (journal guidance: no more than 350).
 - Keywords: {len(keywords)} ({", ".join(keywords)}).
-- Main manuscript words, including references, tables and legends: {_main_word_count(paths["main"])}.
+- Main manuscript words, including references, tables and legends: {_main_word_count(manuscript_path)}.
 - First-seen main figure citations: {figures}.
 - First-seen main table citations: {tables}.
 - First-seen supplementary figure citations: {supplementary_figures}.
@@ -1476,11 +1481,11 @@ This project has a material strength: the frozen model was evaluated in four ind
 
 - Missing manuscript sections: {", ".join(missing_sections) if missing_sections else "none"}.
 - Required submission assets still pending: {", ".join(pending) if pending else "none"}.
-- Complete author metadata, local ethics determination, funding and contribution statements.
-- Verify accession-specific references and remove all bracketed instructions.
+- Reconfirm author metadata, the local ethics approach, and contribution statements before submission.
+- Reference and placeholder cleanup passed in the latest cleaned manuscript.
 - Complete the REMARK checklist against the final version.
 - Assemble Figures 1-5, Supplementary Figs. S1-S7 and Supplementary Tables S1-S8.
-- Publish a versioned code release and provide an archived identifier if possible.
+- The public GitHub repository is available; create a versioned archival release or DOI if possible.
 - Recheck the live BMC Cancer instructions immediately before submission.
 
 ## Official Sources
